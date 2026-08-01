@@ -29,7 +29,7 @@ public class UserController {
     public ResponseEntity<UserDTO> getUserById(
             @RequestHeader("Authorization") String jwt,
             @PathVariable Long id)
-            throws UserException {
+            throws UserException, Exception {
 
         User user = userService.getUserById(id);
         return ResponseEntity.ok(UserMapper.toDTO(user));
