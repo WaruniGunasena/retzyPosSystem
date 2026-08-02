@@ -3,7 +3,6 @@ package com.retzy.controller;
 import com.retzy.domain.StoreStatus;
 import com.retzy.exceptions.UserException;
 import com.retzy.mapper.StoreMapper;
-import com.retzy.model.Store;
 import com.retzy.model.User;
 import com.retzy.payload.dto.StoreDTO;
 import com.retzy.payload.response.ApiResponse;
@@ -86,8 +85,5 @@ public class StoreController {
         return ResponseEntity.ok(storeService.moderateStore(id, status));
 
     }
-
-
-
 
 }
