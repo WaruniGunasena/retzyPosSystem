@@ -29,7 +29,11 @@ public class User {
 
     private String phone;
 
+    @ManyToOne
+    private Store store;
+
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 
     @Column(nullable = false)
