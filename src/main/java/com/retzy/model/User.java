@@ -1,5 +1,6 @@
 package com.retzy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.retzy.domain.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -30,6 +31,7 @@ public class User {
     private String phone;
 
     @ManyToOne
+    @JsonIgnore
     private Store store;
 
     @Column(nullable = false)
@@ -41,7 +43,7 @@ public class User {
 
     private LocalDateTime createdAt;
 
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
 
     private LocalDateTime lastLogin;
 }

@@ -22,7 +22,7 @@ public class UserDTO {
 
     private LocalDateTime createdAt;
 
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
 
     private LocalDateTime lastLogin;
 }
