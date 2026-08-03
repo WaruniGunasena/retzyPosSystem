@@ -1,0 +1,15 @@
+package com.retzy.service;
+
+import com.retzy.model.User;
+import com.retzy.payload.dto.ProductDTO;
+
+import java.util.List;
+
+public interface ProductService {
+
+    ProductDTO createProduct(ProductDTO productDTO, User user) throws Exception;
+    ProductDTO updateProduct(Long id, ProductDTO productDTO, User user);
+    void deleteProduct(Long id, User user);
+    List<ProductDTO> getProductByStoreId(Long storeId);
+    List<ProductDTO> searchByKeyword(Long storeId, String keyword);
+}
