@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -34,7 +34,8 @@ public class Product {
 
     private String image;
 
-    //private Category category;
+    @ManyToOne
+    private Category category;
 
     @ManyToOne
     private Store store;

@@ -1,10 +1,12 @@
 package com.retzy.service.impl;
 
 import com.retzy.mapper.ProductMapper;
+import com.retzy.model.Category;
 import com.retzy.model.Product;
 import com.retzy.model.Store;
 import com.retzy.model.User;
 import com.retzy.payload.dto.ProductDTO;
+import com.retzy.repository.CategoryRepository;
 import com.retzy.repository.ProductRepository;
 import com.retzy.repository.StoreRepository;
 import com.retzy.service.ProductService;
@@ -22,6 +24,7 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
     private final StoreRepository storeRepository;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO, User user) throws Exception {
@@ -30,7 +33,11 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(
                         ()-> new Exception("Store not found")
                 );
-        Product product = ProductMapper.toEntity(productDTO,store);
+        Category category = categoryRepository.findById(productDTO.getCategoryId())
+                .orElseThrow(
+                        ()-> new Exception("Category not found")
+                );
+        Product product = ProductMapper.toEntity(productDTO,store,category);
         Product savedProduct = productRepository.save(product);
         return ProductMapper.toDTO(savedProduct);
     }
@@ -41,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.findById(id).orElseThrow(
                 ()-> new Exception(("Product not found"))
         );
+
         product.setName(productDTO.getName());
         product.setDescription(productDTO.getDescription());
         product.setSku(productDTO.getSku());
@@ -49,6 +57,14 @@ public class ProductServiceImpl implements ProductService {
         product.setSellingPrice(productDTO.getSellingPrice());
         product.setBrand(productDTO.getBrand());
         product.setUpdatedAt(LocalDateTime.now());
+
+        if (productDTO.getCategoryId()!=null){
+            Category category = categoryRepository.findById(productDTO.getCategoryId()).orElseThrow(
+                    ()-> new Exception("Category not found")
+            );
+            product.setCategory(category);
+        }
+
 
         Product savedProduct = productRepository.save(product);
         return ProductMapper.toDTO(savedProduct);

@@ -1,5 +1,6 @@
 package com.retzy.mapper;
 
+import com.retzy.model.Category;
 import com.retzy.model.Product;
 import com.retzy.model.Store;
 import com.retzy.payload.dto.ProductDTO;
@@ -16,6 +17,7 @@ public class ProductMapper {
                 .mrp(product.getMrp())
                 .sellingPrice(product.getSellingPrice())
                 .brand(product.getBrand())
+                .category(CategoryMapper.toDTO(product.getCategory()))
                 .storeId(product.getStore() !=null? product.getStore().getId():null)
                 .image(product.getImage())
                 .createdAt(product.getCreatedAt())
@@ -23,7 +25,7 @@ public class ProductMapper {
                 .build();
     }
 
-    public static Product toEntity(ProductDTO productDTO, Store store){
+    public static Product toEntity(ProductDTO productDTO, Store store, Category category){
         return Product.builder()
                 .name(productDTO.getName())
                 .sku(productDTO.getSku())
@@ -31,6 +33,8 @@ public class ProductMapper {
                 .mrp(productDTO.getMrp())
                 .sellingPrice(productDTO.getSellingPrice())
                 .brand(productDTO.getBrand())
+                .category(category)
+                .store(store)
                 .build();
 
     }
