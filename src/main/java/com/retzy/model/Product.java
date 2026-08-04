@@ -1,6 +1,5 @@
 package com.retzy.model;
 
-import com.retzy.domain.StoreStatus;
 import jakarta.persistence.*;
 import lombok.*;
 

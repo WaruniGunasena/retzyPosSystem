@@ -1,6 +1,5 @@
 package com.retzy.payload.dto;
 
-import com.retzy.model.Store;
 import lombok.Builder;
 import lombok.Data;
 

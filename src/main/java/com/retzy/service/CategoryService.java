@@ -1,6 +1,5 @@
 package com.retzy.service;
 
-import com.retzy.exceptions.UserException;
 import com.retzy.payload.dto.CategoryDTO;
 
 import java.util.List;
