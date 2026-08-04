@@ -6,7 +6,7 @@ import com.retzy.payload.dto.ProductDTO;
 
 public class ProductMapper {
 
-    public ProductDTO toDTO(Product product){
+    public static ProductDTO toDTO(Product product){
 
         return ProductDTO.builder()
                 .id(product.getId())
@@ -23,7 +23,7 @@ public class ProductMapper {
                 .build();
     }
 
-    public Product toEntity(ProductDTO productDTO, Store store){
+    public static Product toEntity(ProductDTO productDTO, Store store){
         return Product.builder()
                 .name(productDTO.getName())
                 .sku(productDTO.getSku())
