@@ -2,7 +2,6 @@ package com.retzy.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
