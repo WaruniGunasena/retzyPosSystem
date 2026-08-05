@@ -2,46 +2,49 @@ package com.retzy.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Builder
-public class Product {
+public class Branch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
-    private String sku;
+    private String address;
 
-    private String description;
+    private String phone;
 
-    private Double mrp;
+    private String email;
 
-    private Double sellingPrice;
+    @ElementCollection
+    private List<String> workingDays;
 
-    private String brand;
+    private LocalTime openTime;
 
-    private String image;
-
-    @ManyToOne
-    private Category category;
-
-    @ManyToOne
-    private Store store;
+    private LocalTime closeTime;
 
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    private Store store;
+
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private User manager;
 
     @PrePersist
     protected void onCreate(){
