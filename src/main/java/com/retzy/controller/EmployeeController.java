@@ -5,7 +5,6 @@ import com.retzy.model.User;
 import com.retzy.payload.dto.UserDTO;
 import com.retzy.payload.response.ApiResponse;
 import com.retzy.service.EmployeeService;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,20 +56,20 @@ public class EmployeeController {
     }
 
     @GetMapping("/store/{id}")
-    public ResponseEntity<List<User>> storeEmployee(
+    public ResponseEntity<List<UserDTO>> storeEmployee(
             @PathVariable Long id,
             @RequestParam(required = false)UserRole userRole
             ) throws Exception {
-        List<User> employee = employeeService.findStoreEmployees(id, userRole);
+        List<UserDTO> employee = employeeService.findStoreEmployees(id, userRole);
         return ResponseEntity.ok(employee);
     }
 
     @GetMapping("/branch/{id}")
-    public ResponseEntity<List<User>> branchEmployee(
+    public ResponseEntity<List<UserDTO>> branchEmployee(
             @PathVariable Long id,
             @RequestParam(required = false)UserRole userRole
     ) throws Exception {
-        List<User> employee = employeeService.findBranchEmployees(id, userRole);
+        List<UserDTO> employee = employeeService.findBranchEmployees(id, userRole);
         return ResponseEntity.ok(employee);
     }
 
