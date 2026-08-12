@@ -40,7 +40,7 @@ public class Order {
 
     private PaymentType paymentType;
 
-    @Enumerated(EnumType.STRING) // or EnumType.ORDINAL based on your model
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     @PrePersist
