@@ -20,25 +20,26 @@ public class Refund {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Order order;
 
     private String reason;
 
     private Double amount;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private ShiftReport shiftReport;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User cashier;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Branch branch;
 
     private LocalDateTime createdAt;
 
+    @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
 
     @PrePersist

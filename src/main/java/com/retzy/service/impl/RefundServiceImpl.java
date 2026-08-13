@@ -94,10 +94,9 @@ public class RefundServiceImpl implements RefundService {
 
     @Override
     public RefundDTO getRefundById(Long refundId) throws Exception {
-        return refundRepository.findById(refundId)
-                .map(RefundMapper::toDTO).orElseThrow(
-                        () -> new Exception("Refund not found")
-                );
+        return refundRepository.findByIdWithDetails(refundId)
+                .map(RefundMapper::toDTO)
+                .orElseThrow(() -> new Exception("Refund not found with ID: " + refundId));
     }
 
     @Override
