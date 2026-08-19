@@ -127,7 +127,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
     @Override
     public List<ShiftReportDTO> getShiftReportsByBranchId(Long branchId) {
 
-        List<ShiftReport> reports = shiftReportRepository.findBYBranchId(branchId);
+        List<ShiftReport> reports = shiftReportRepository.findByBranchId(branchId);
         return reports.stream().map(
                 ShiftReportMapper::toDTO
         ).collect(Collectors.toList());
